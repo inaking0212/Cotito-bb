@@ -76,3 +76,13 @@ jobs:
         app-name: ${{ env.AZURE_WEBAPP_NAME }}
         publish-profile: ${{ secrets.AZURE_WEBAPP_PUBLISH_PROFILE }}
         package: ${{ env.AZURE_WEBAPP_PACKAGE_PATH }}
+
+    - name: 'Set Node.js version on Azure Web App'
+      uses: azure/cli@v2
+      with:
+        azcliversion: 2.30.0
+        inlineScript: |
+          az webapp config set --name ${{ env.AZURE_WEBAPP_NAME }} --resource-group <YOUR_RESOURCE_GROUP_NAME> --linux-fx-version "NODE|20-lts"
+      env:
+        AZURE_WEBAPP_NAME: ${{ env.AZURE_WEBAPP_NAME }}
+        AZURE_CREDENTIALS: ${{ secrets.AZURE_WEBAPP_PUBLISH_PROFILE }}
