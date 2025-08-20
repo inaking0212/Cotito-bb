@@ -1,0 +1,248 @@
+/* Paleta y tipografías */
+:root {
+  --bg-start: #ffdde1;
+  --bg-end: #ee9ca7;
+  --card: #ffffff;
+  --text: #2b2b2b;
+  --muted: #6b6b6b;
+  --accent: #e25578;
+  --accent-2: #ffb6c1;
+  --shadow: 0 10px 30px rgba(0,0,0,0.06);
+  --radius: 18px;
+}
+
+* { box-sizing: border-box; }
+
+html, body {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: "Inter", system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial, sans-serif;
+  color: var(--text);
+  background: linear-gradient(160deg, var(--bg-start), var(--bg-end));
+  background-attachment: fixed;
+  line-height: 1.6;
+}
+
+/* Estructura general */
+h1, h2, h3 {
+  font-family: "Playfair Display", Georgia, "Times New Roman", serif;
+  margin: 0 0 12px;
+  line-height: 1.2;
+}
+
+p {
+  margin: 0 0 16px;
+}
+
+main {
+  width: min(1100px, 92%);
+  margin: 38px auto 80px;
+}
+
+/* Hero */
+.hero {
+  position: relative;
+  padding: 48px 0 24px;
+  text-align: center;
+}
+
+.hero__inner {
+  width: min(1000px, 92%);
+  margin: 0 auto;
+  background: rgba(255, 255, 255, 0.6);
+  backdrop-filter: blur(6px);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: 28px 20px 18px;
+}
+
+.hero h1 {
+  font-size: clamp(32px, 5vw, 56px);
+  color: #a0204c;
+}
+
+.tagline {
+  color: var(--muted);
+  font-weight: 600;
+  margin-bottom: 16px;
+}
+
+.hero__photo {
+  width: 100%;
+  margin: 18px auto 0;
+  border-radius: calc(var(--radius) - 6px);
+  overflow: hidden;
+  background: var(--card);
+}
+
+.hero__photo img {
+  width: 100%;
+  height: 360px;
+  object-fit: cover;
+  display: block;
+}
+
+.hero__photo figcaption {
+  font-size: 14px;
+  color: var(--muted);
+  padding: 10px 12px;
+}
+
+/* Corazones sutiles flotando */
+.floating-hearts {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.floating-hearts::before,
+.floating-hearts::after {
+  content: "";
+  position: absolute;
+  inset: -20%;
+  background:
+    radial-gradient(circle at 30% 40%, rgba(226,85,120,0.18) 0 12px, transparent 13px),
+    radial-gradient(circle at 70% 60%, rgba(255,182,193,0.18) 0 10px, transparent 11px),
+    radial-gradient(circle at 50% 20%, rgba(226,85,120,0.12) 0 9px, transparent 10px),
+    radial-gradient(circle at 20% 80%, rgba(255,182,193,0.12) 0 8px, transparent 9px);
+  filter: blur(1px);
+  animation: float 18s linear infinite;
+}
+
+.floating-hearts::after {
+  animation-duration: 24s;
+  opacity: 0.7;
+}
+
+@keyframes float {
+  0%   { transform: translateY(0) }
+  100% { transform: translateY(-16%) }
+}
+
+/* Secciones */
+section {
+  background: var(--card);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: 24px;
+  margin: 26px 0;
+}
+
+.carta h2,
+.galeria h2,
+.recuerdos h2,
+.brindis h2 {
+  color: #a0204c;
+  font-size: clamp(22px, 3vw, 32px);
+  margin-bottom: 10px;
+}
+
+.carta .firma {
+  text-align: right;
+  font-style: italic;
+  color: var(--muted);
+  margin-top: 8px;
+}
+
+/* Galería de fotos */
+.galeria .grid {
+  display: grid;
+  gap: 14px;
+  grid-template-columns: repeat(3, 1fr);
+  margin-top: 10px;
+}
+
+.galeria figure {
+  margin: 0;
+  border-radius: 14px;
+  overflow: hidden;
+  background: #fff;
+  transition: transform .18s ease, box-shadow .18s ease;
+}
+
+.galeria figure:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 24px rgba(0,0,0,0.08);
+}
+
+.galeria img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  display: block;
+}
+
+.galeria figcaption {
+  font-size: 14px;
+  color: var(--muted);
+  padding: 8px 10px 10px;
+}
+
+/* Línea de tiempo */
+.timeline {
+  display: grid;
+  gap: 16px;
+}
+
+.hito {
+  display: grid;
+  grid-template-columns: 160px 1fr;
+  gap: 14px;
+  align-items: center;
+  background: #fff;
+  border-radius: 14px;
+  padding: 12px;
+}
+
+.hito__media img {
+  width: 100%;
+  height: 120px;
+  object-fit: cover;
+  border-radius: 10px;
+  display: block;
+}
+
+.hito__content h3 {
+  margin: 0 0 6px;
+  color: #a0204c;
+  font-size: 18px;
+}
+
+.hito__content p {
+  margin: 0;
+  color: var(--text);
+}
+
+/* Brindis */
+.brindis p {
+  font-weight: 600;
+  text-align: center;
+  color: #7a274a;
+  margin: 6px auto 0;
+  max-width: 60ch;
+}
+
+/* Footer */
+.footer {
+  text-align: center;
+  color: #5e2c3d;
+  font-size: 14px;
+  margin: 26px 0 34px;
+  opacity: 0.9;
+}
+
+/* Responsivo */
+@media (max-width: 900px) {
+  .galeria .grid { grid-template-columns: repeat(2, 1fr); }
+  .hero__photo img { height: 300px; }
+}
+
+@media (max-width: 600px) {
+  .galeria .grid { grid-template-columns: 1fr; }
+  .hito { grid-template-columns: 1fr; }
+  .hito__media img { height: 180px; }
+}
